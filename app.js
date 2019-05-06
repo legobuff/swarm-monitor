@@ -5,7 +5,7 @@ const monitor = require('node-docker-monitor');
 
 const leds = new Blinkt();
 
-const image = 'stefanscherer/whoami';
+// const image = 'stefanscherer/whoami';
 var containers = [];
 
 const shutdown = function () {
@@ -48,13 +48,13 @@ const color = function (container) {
     }
     return [ 255, 0, 0, (11 - container.animation) * 0.08 ];
   } else {
-    if (container.Image.includes(image+':1.1')) {
-      return [ 255, 255, 0, 0.1 ];
-    } else if (container.Image.includes(image+':1.2')) {
-      return [ 0, 255, 255, 0.1 ];
-    } else {
-      return [ 255, 255, 255, 0.1 ];
-    }
+    // if (container.Image.includes(image+':1.1')) {
+    //   return [ 255, 255, 0, 0.1 ];
+    // } else if (container.Image.includes(image+':1.2')) {
+    //   return [ 0, 255, 255, 0.1 ];
+    // } else {
+      return [ 0, 102, 204, 0.1 ];
+    // }
   }
 };
 
@@ -81,9 +81,9 @@ monitor({
     container.mode = 'up';
     container.animation = 0;
     console.log('up', container);
-    if (container.Image.includes(image)) {
+    // if (container.Image.includes(image)) {
       containers.push(container);
-    }
+    // }
   },
   onContainerDown: function(container) {
     container.mode = 'down';
